@@ -145,6 +145,9 @@
     <ClCompile Include="src\pmp\algorithms\laplace.cpp">
       <Filter>Source Files\pmp\algorithms</Filter>
     </ClCompile>
+    <ClCompile Include="src\DrawComponent_1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\QtViewer.h">

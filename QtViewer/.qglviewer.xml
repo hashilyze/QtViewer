@@ -4,16 +4,16 @@
     <foregroundColor blue="0" green="0" red="0"/>
     <backgroundColor blue="0" green="0" red="0"/>
   </State>
-  <Display FPSIsDisplayed="false" axisIsDrawn="false" cameraIsEdited="false" gridIsDrawn="false"/>
-  <Geometry fullScreen="false" height="463" posX="774" posY="254" width="690"/>
+  <Display FPSIsDisplayed="false" axisIsDrawn="false" cameraIsEdited="true" gridIsDrawn="false"/>
+  <Geometry fullScreen="false" height="463" posX="423" posY="146" width="690"/>
   <Camera>
     <Parameters Type="PERSPECTIVE" fieldOfView="0.785398" orthoCoef="0.414214" sceneRadius="1" zClippingCoefficient="1.73205" zNearCoefficient="0.005">
       <SceneCenter x="0" y="0" z="0"/>
     </Parameters>
     <Stereo IODist="0.062" focusDistance="2.41421" physScreenWidth="0.5"/>
     <ManipulatedCameraFrame>
-      <position x="0" y="0" z="2.61313"/>
-      <orientation q0="0" q1="0" q2="0" q3="1"/>
+      <position x="-0.309928" y="2.39573" z="0.996424"/>
+      <orientation q0="-0.554463" q1="-0.0437386" q2="0.041478" q3="0.830022"/>
       <ManipulatedParameters rotSens="1" spinSens="0.3" transSens="1" wheelSens="1" zoomSens="1"/>
       <ManipulatedCameraParameters flySpeed="0.01" rotatesAroundUpVector="false" zoomsOnPivotPoint="false">
         <sceneUpVector x="0" y="1" z="0"/>
