@@ -11,13 +11,13 @@
 void DrawComponent::Init()
 {
     //1. Load file or Create mesh.
-    InitMyMesh();
-    //InitLoadFile();
+    //InitMyMesh();
+    InitLoadFile();
 
     //2. Add attributes.
     AddAttributes();
 
-    pmp::write(mesh, "output.obj");
+    //pmp::write(mesh, "output.obj");
 }
 
 void DrawComponent::InitLoadFile()
@@ -61,7 +61,7 @@ void DrawComponent::Draw()
     auto fc = mesh.get_face_property<pmp::Color>("f:color");
 
     //1. Basic drawing
-    if (true)
+    if (false)
         for (auto f : mesh.faces()) {
             glNormal3dv(fn[f].data());
             DrawFace(f);
@@ -76,7 +76,7 @@ void DrawComponent::Draw()
         }
 
     //3. Traverse the mesh
-    if (false)
+    if (true)
     {
         glLineWidth(1.0);
         glPointSize(20.0);
@@ -87,45 +87,51 @@ void DrawComponent::Draw()
             DrawFace(f, true);
         }
 
-        //3-2. Draw a vertex which index is 0 with red.
-        pmp::Vertex startV(0);
-        glColor3f(1, 0, 0);
-        glBegin(GL_POINTS);
-        glVertex3dv(mesh.position(startV).data());
-        glEnd();
+        {
+            pmp::Vertex startV(0);
+            float ringColors[][3] = { {0, 0, 1}, {1, 1, 0}, {0, 1, 0}, {1, 0, 1} };
+            std::set<pmp::Vertex> visitedVertex;
+            std::set<pmp::Face> visitedFace;
 
-        //3-3. Draw face(s) which has vertex(0) with blue.
-        for (auto f : mesh.faces(startV)) {
-            glColor3f(0, 0, 1);
-            DrawFace(f);
-        }
+            visitedVertex.insert(startV);            
+            for (int i = 0, e = sizeof(ringColors) / (sizeof(float) * 3); i < e; ++i) {
+                float (& ringColor)[3] = ringColors[i];
+                glColor3f(ringColor[0], ringColor[1], ringColor[2]);
 
-        //3-4. Draw vertices which are connected with vertex(0) with green.
-        glColor3f(0, 1, 0);
-        glBegin(GL_POINTS);
-        for (auto v : mesh.vertices(startV)) {
-            auto p = mesh.position(v);
-            glVertex3dv(p.data());
-        }
-        glEnd();
-
-        if (true) {
-            //3-5. Draw faces which has green vertices but no red vertex,
-            //							   with yellow.
-            glColor3f(1, 1, 0);
-
-            std::set<pmp::Face> visitedFaces;
-            for (auto f : mesh.faces(startV))
-                visitedFaces.insert(f);
-
-            for (auto v : mesh.vertices(startV)) {
-                for (auto f : mesh.faces(v)) {
-                    if (visitedFaces.find(f) == visitedFaces.end())
-                    {
-                        DrawFace(f);
+                for (auto vertex : visitedVertex) {
+                    for (auto face : mesh.faces(vertex)) {
+                        if (visitedFace.find(face) == visitedFace.end()) {
+                            DrawFace(face);
+                            visitedFace.insert(face);
+                        }
                     }
                 }
+
+                std::set<pmp::Vertex> neighbours;
+                for (auto vertex : visitedVertex) {
+                    for (auto candidate : mesh.vertices(vertex)) {
+                        if (visitedVertex.find(candidate) == visitedVertex.end()) {
+                            neighbours.insert(candidate);
+                        }
+                    }
+                }
+                for (auto vertex : neighbours) {
+                    visitedVertex.insert(vertex);
+                }
             }
+
+            glColor3f(1, 0, 0);
+            glBegin(GL_POINTS);
+            glVertex3dv(mesh.position(startV).data());
+            glEnd();
+
+            glColor3f(0, 1, 0);
+            glBegin(GL_POINTS);
+            for (auto v : mesh.vertices(startV)) {
+                auto p = mesh.position(v);
+                glVertex3dv(p.data());
+            }
+            glEnd();
         }
     }
 }
