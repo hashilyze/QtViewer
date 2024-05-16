@@ -117,7 +117,7 @@
     <QtUic Include="QtViewer.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DrawComponent_cube.cpp" />
+    <ClCompile Include="DrawComponent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pmp\algorithms\curvature.cpp" />
     <ClCompile Include="src\pmp\algorithms\decimation.cpp" />
