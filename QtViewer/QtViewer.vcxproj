@@ -19,7 +19,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C8E87E49-7C9B-4D5D-A09C-AD16A385B65C}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
@@ -117,7 +117,7 @@
     <QtUic Include="QtViewer.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DrawComponent.cpp" />
+    <ClCompile Include="src\DrawComponent_cube.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pmp\algorithms\curvature.cpp" />
     <ClCompile Include="src\pmp\algorithms\decimation.cpp" />

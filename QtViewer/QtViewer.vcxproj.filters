@@ -55,7 +55,7 @@
     <ClCompile Include="src\QtViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\DrawComponent.cpp">
+    <ClCompile Include="src\DrawComponent_cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Viewer.cpp">
