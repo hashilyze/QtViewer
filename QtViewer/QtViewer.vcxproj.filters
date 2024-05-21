@@ -142,7 +142,10 @@
     <ClCompile Include="src\pmp\algorithms\laplace.cpp">
       <Filter>Source Files\pmp\algorithms</Filter>
     </ClCompile>
-    <ClCompile Include="DrawComponent.cpp">
+    <ClCompile Include="DrawComponent_1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

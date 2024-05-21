@@ -117,7 +117,11 @@
     <QtUic Include="QtViewer.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DrawComponent.cpp" />
+    <ClCompile Include="DrawComponent_1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\DrawComponent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pmp\algorithms\curvature.cpp" />
     <ClCompile Include="src\pmp\algorithms\decimation.cpp" />
